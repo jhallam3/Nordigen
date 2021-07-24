@@ -9,9 +9,9 @@ namespace Nordigen.Utilities
 {
     public class HttpRequestor
     {
-        public async Task<T> HttpRestRequester<T>(Method method, [NotNull] string RequestURL, [NotNull] string uri, [NotNull] string accessToken, List<RequestParameter> parameters = null)
+        public async Task<T> HttpRestRequester<T>(Method method, [NotNull] string requestUrl, [NotNull] string uri, [NotNull] string accessToken, List<RequestParameter> parameters = null, Object body = null)
         {
-            var client = new RestClient(RequestURL + uri)
+            var client = new RestClient(requestUrl + uri)
             {
                 Timeout = -1
             };
@@ -19,7 +19,7 @@ namespace Nordigen.Utilities
             var request = new RestRequest(method);
 
             request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Authorization", "Bearer " + accessToken);
+            request.AddHeader("Authorization", "Token " + accessToken);
 
             if (parameters != null)
             {
@@ -27,6 +27,11 @@ namespace Nordigen.Utilities
                 {
                     request.AddParameter(parameter.Key, parameter.Value, parameter.Type);
                 }
+            }
+
+            if (body != null)
+            {
+                request.AddJsonBody(body);
             }
 
             var response = await client.ExecuteAsync(request);

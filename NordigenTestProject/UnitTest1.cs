@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace NordigenTestProject
@@ -10,8 +11,10 @@ namespace NordigenTestProject
         }
 
         [Test]
-        public void Test1()
+        public async Task Test1()
         {
+
+            var CheckHTTPCLient = await new Nordigen.Utilities.HttpCall().Call();
             Assert.Pass();
         }
     }

@@ -18,14 +18,22 @@ namespace Nordigen.Utilities
 
             var request = new RestRequest(method);
 
-            request.AddHeader("Content-Type", "application/json");
+            if (uri == "requisitions/" || uri.EndsWith("/links/"))
+            {
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            }
+            else
+            {
+                request.AddHeader("Content-Type", "application/json");
+            }
+            
             request.AddHeader("Authorization", "Token " + accessToken);
-
+            //request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             if (parameters != null)
             {
                 foreach (var parameter in parameters)
                 {
-                    request.AddParameter(parameter.Key, parameter.Value, parameter.Type);
+                    request.AddParameter(parameter.Key, parameter.Value);
                 }
             }
 

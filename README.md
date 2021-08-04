@@ -7,7 +7,7 @@ this has example code to run.
 
 example below. 
 
-```
+```c#
             var token = File.ReadAllText("/Users/jonathanhallam/Documents/Nordigen/Token");
             var userID = Guid.NewGuid().ToString();
             var requistionID = Guid.NewGuid().ToString();

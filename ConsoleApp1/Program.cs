@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using Nordigen.DataTypes;
 using Nordigen.DataTypes.Agreements;
 
@@ -56,19 +57,38 @@ namespace ConsoleApp1
 
             var link = new Nordigen.Nordigen().CreateLink(requisition, bank, token).Result;
 
-            Console.WriteLine("link to authenticate to your bank - ");
+            Console.WriteLine("link to authenticate to your bank - any username or pin to login ");
             Console.WriteLine(link.initiate);
 
+            Console.WriteLine("");
+            Console.WriteLine("connect to the bank above and then press enter");
+            Console.ReadKey();
             //6 List accounts
 
             var ListAccounts = new Nordigen.Nordigen().ListAccounts(requisition.id, token).Result;
 
+            Console.WriteLine("--- Accounts ---");
+            Console.WriteLine(JsonConvert.SerializeObject(ListAccounts));
+            Console.WriteLine("");
             foreach (var v in ListAccounts.accounts)
             {
                 var listtransactions = new Nordigen.Nordigen().ListTransactions(v, token).Result;
 
+                Console.WriteLine("--- Transactions ---");
+                Console.WriteLine(JsonConvert.SerializeObject(listtransactions));
+                Console.WriteLine("");
+                
                 var listdetails = new Nordigen.Nordigen().Listdetails(v, token).Result;
+                
+                Console.WriteLine("--- Details ---");
+                Console.WriteLine(JsonConvert.SerializeObject(listdetails));
+                Console.WriteLine("");
+                
                 var listbalances = new Nordigen.Nordigen().ListBalances(v, token).Result;
+                
+                Console.WriteLine("--- Balances ---");
+                Console.WriteLine(JsonConvert.SerializeObject(listbalances));
+                Console.WriteLine("");
             }
         }
     }

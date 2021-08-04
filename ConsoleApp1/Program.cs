@@ -15,17 +15,18 @@ namespace ConsoleApp1
             var token = File.ReadAllText("/Users/jonathanhallam/Documents/Nordigen/Token");
             var userID = Guid.NewGuid().ToString();
             var requistionID = Guid.NewGuid().ToString();
-            Console.WriteLine("hello");
+            
 
 
             //2 get banks
             var country = "GB";
+            //example UK bank.
             var bankName = "Lloyds Bank Personal";
             var banks = new Nordigen.Nordigen().GetBanks(country, token).Result;
-//
-            var bank = banks.Where(x => x.name.Contains(bankName)).First();
-            //var bank = banks.Where(x => x.name.Contains("sand")).First();
 
+            var bank = banks.Where(x => x.name.Contains(bankName)).First();
+            
+            // setting this sets the sandbox bank
             bank.id = "SANDBOXFINANCE_SFIN0000";
 
             //Step 3: Create an end-user agreement

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace Nordigen.DataTypes.Accounts
 {
-    
     public class BalanceAmount
     {
         public string amount { get; set; }
@@ -20,7 +19,4 @@ namespace Nordigen.DataTypes.Accounts
     {
         public List<Balance> balances { get; set; }
     }
-
-
-
 }

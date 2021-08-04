@@ -2,6 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Nordigen</Title>
+        <Authors>https://github.com/jhallam3</Authors>
+        <PackageProjectUrl>https://github.com/jhallam3/Nordigen</PackageProjectUrl>
     </PropertyGroup>
 
     <ItemGroup>

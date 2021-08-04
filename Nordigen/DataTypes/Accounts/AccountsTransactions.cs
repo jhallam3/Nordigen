@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace Nordigen.DataTypes.Accounts
 {
-   
     public class DebtorAccount
     {
         public string iban { get; set; }

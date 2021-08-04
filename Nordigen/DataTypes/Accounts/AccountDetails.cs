@@ -1,6 +1,5 @@
 namespace Nordigen.DataTypes.Accounts
 {
-    
     public class Account
     {
         public string resourceId { get; set; }

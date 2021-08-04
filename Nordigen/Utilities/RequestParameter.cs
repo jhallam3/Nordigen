@@ -2,7 +2,7 @@ using RestSharp;
 
 namespace Nordigen.Utilities
 {
-    public class RequestParameter
+    internal class RequestParameter
     {
         public string Key { get; set; }
 
